@@ -2,31 +2,37 @@ import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 # Ładowanie modelu GPT-2 i tokenizera
-model_name = "gpt2"  # Możesz użyć "EleutherAI/gpt-neo-1.3B" dla lepszego modelu
+model_name = "gpt2"  # Można użyć "EleutherAI/gpt-neo-1.3B" dla lepszego modelu
 model = GPT2LMHeadModel.from_pretrained(model_name)
 tokenizer = GPT2Tokenizer.from_pretrained(model_name)
 
 HOMOGLYPHS = {
-    'a': 'а',  # Cyrylica
-    'e': 'е',  # Cyrylica
-    'o': 'о',  # Cyrylica
-    'p': 'р',  # Cyrylica
-    'c': 'с',  # Cyrylica
-    'x': 'х',  # Cyrylica
-    'y': 'у',  # Cyrylica
-    'A': 'Α',  # Grecka alfa
-    'B': 'Β',  # Grecka beta
-    'E': 'Ε',  # Grecka epsilon
-    'H': 'Η',  # Grecka eta
-    'I': 'Ι',  # Grecka jota
-    'K': 'Κ',  # Grecka kapa
-    'M': 'Μ',  # Grecka mi
-    'N': 'Ν',  # Grecka ni
-    'O': 'Ο',  # Grecka omikron
-    'P': 'Ρ',  # Grecka ro
-    'T': 'Τ',  # Grecka tau
-    'X': 'Χ',  # Grecka chi
-    'Y': 'Υ',  # Grecka upsilon
+    # Cyrylica (małe litery)
+    'a': 'а',  # Cyrylica 'a'
+    'e': 'е',  # Cyrylica 'e'
+    'o': 'о',  # Cyrylica 'o'
+    'p': 'р',  # Cyrylica 'p'
+    'c': 'с',  # Cyrylica 'c'
+    'x': 'х',  # Cyrylica 'x'
+    'y': 'у',  # Cyrylica 'y'
+
+    # Grecki (wielkie litery)
+    'A': 'Α',  # Grecka 'A'
+    'B': 'Β',  # Grecka 'B'
+    'E': 'Ε',  # Grecka 'E'
+    'H': 'Η',  # Grecka 'H'
+    'I': 'Ι',  # Grecka 'I'
+    'K': 'Κ',  # Grecka 'K'
+    'M': 'Μ',  # Grecka 'M'
+    'N': 'Ν',  # Grecka 'N'
+    'O': 'Ο',  # Grecka 'O'
+    'P': 'Ρ',  # Grecka 'P'
+    'T': 'Τ',  # Grecka 'T'
+    'X': 'Χ',  # Grecka 'X'
+    'Y': 'Υ',  # Grecka 'Y'
+
+    # Cyrylica (wielkie litery) 
+    'C': 'С',  # Cyrylica 'C'
 }
 
 # Generowanie odwrotnej mapy
@@ -108,8 +114,8 @@ def decode_message(encoded_text):
     return ''.join(message_chars)
 
 original_text = "Once upon a time, there was a brave hero named Alex."
-# hidden_message = "Ela z mlotkiem w Dubaju" # mniej więcej maksymalna długośc wiadomości
-hidden_message = "Hi" 
+hidden_message = "Ela z mlotkiem w Dubaju" # mniej więcej maksymalna długośc wiadomości
+# hidden_message = "Hi" 
 
 try:
     # Kodowanie
@@ -121,4 +127,3 @@ try:
     print("Odkodowana wiadomość:", decoded_message)
 except ValueError as e:
     print(f"Błąd: {e}")
-
