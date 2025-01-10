@@ -116,7 +116,6 @@ def decode_message(encoded_text):
 original_text = "Once upon a time, there was a brave hero named Alex."
 hidden_message = "Ela z mlotkiem w Dubaju" # mniej więcej maksymalna długośc wiadomości
 # hidden_message = "Hi" 
-
 try:
     # Kodowanie
     encoded_text = encode_message(original_text, hidden_message)
